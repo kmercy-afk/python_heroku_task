@@ -21,9 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-local-key-change-this-in-production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'  # True for local, False on Heroku
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'  # True for local, False on Render/Heroku
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.herokuapp.com']  # Add Render/Heroku domains
 
 # Application definition
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',  # Must be first for WhiteNoise
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # For serving static files on Heroku
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For serving static files on Render/Heroku
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,7 +123,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Logging (optional, for debugging on Heroku)
+# Logging (optional, for debugging on Render/Heroku)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
